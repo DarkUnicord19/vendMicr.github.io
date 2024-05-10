@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vending Machine Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item span {
+            flex: 1;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vending Machine Catalog</h1>
+        <div class="item">
+            <span>Chips</span>
+            <span>$1.50</span>
+            <input type="number" id="chipsQty" value="0">
+        </div>
+        <div class="item">
+            <span>Soda</span>
+            <span>$2.00</span>
+            <input type="number" id="sodaQty" value="0">
+        </div>
+        <!-- Add more items here -->
+        <div class="total">
+            Total Cost: <span id="totalCost">$0.00</span>
+        </div>
+    </div>
+
+    <script>
+        const chipsPrice = 1.5;
+        const sodaPrice = 2.0;
+
+        function updateTotalCost() {
+            const chipsQty = parseFloat(document.getElementById('chipsQty').value);
+            const sodaQty = parseFloat(document.getElementById('sodaQty').value);
+            const total = (chipsQty * chipsPrice) + (sodaQty * sodaPrice);
+            document.getElementById('totalCost').textContent = `$${total.toFixed(2)}`;
+        }
+
+        document.getElementById('chipsQty').addEventListener('input', updateTotalCost);
+        document.getElementById('sodaQty').addEventListener('input', updateTotalCost);
+    </script>
+</body>
+</html>
